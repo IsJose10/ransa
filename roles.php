@@ -16,14 +16,65 @@ if($cod!='')
 ?>
 
 <script>
+function restablecer()
+{
+	AjaxConsulta('roles.php', {}, 'contenedor');	
+}
 function ver(cod)
 {
-	alert('PRUEBA');
-	
-	//AjaxConsulta('roles.php', {cod:cod}, 'contenedor');	
+	AjaxConsulta('roles.php', {cod:cod}, 'contenedor');	
+}
+function insertar()
+{	
+document.form.op.value='I';	
+		if(form.checkValidity()){
+
+			debugger;
+			AjaxConsulta('roles_l.php', {op:$('#op').val(),codigo:$('#codigo').val(),nombre:$('#nombre').val()}, 'contenedor');	
+		}
+	//document.form.submit();
+}
+function modificar()
+{
+	document.form.op.value='M';	
+		if(form.checkValidity()){
+
+			debugger;
+			AjaxConsulta('roles_l.php', {op:$('#op').val(),codigo:$('#codigo').val(),nombre:$('#nombre').val()}, 'contenedor');	
+		}
+	//document.form.submit();
+}
+function eliminar()
+{
+	document.form.op.value='E';
+		if(form.checkValidity()){
+
+			debugger;
+			AjaxConsulta('roles_l.php', {op:$('#op').val(),codigo:$('#codigo').val(),nombre:$('#nombre').val()}, 'contenedor');	
+		}
+}
+
+
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
 }
 </script>
   
+
   
 <section class="m-card" aria-labelledby="reps-title">  
 <form name=form id=form  action="" method="post" onsubmit="return false;">
@@ -32,6 +83,7 @@ function ver(cod)
 <i><h3><?php ECHO htmlentities('ROLES DE USUARIO');?></h3></i>
 </div>
 </div>
+
 
 <div class="row">
 
