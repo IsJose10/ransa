@@ -5,6 +5,7 @@ $id_usuario=$_SESSION["id"];
 $datos_usuario=$_SESSION["nombre"];
 $email=$_SESSION["email"];
 
+
 ?>
 
 <!DOCTYPE html>
