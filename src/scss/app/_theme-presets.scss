@@ -5,12 +5,12 @@
    reskins automatically. Apply a `theme-{name}` class on <body> to switch.
    ============================================================================ */
 
-/* Blue (default — already set via the base :root tokens, but make explicit) */
+/* Corporate green/orange theme */
 body.app.theme-blue {
-    --m-accent:        #4272d7;
-    --m-accent-rgb:    66, 114, 215;
-    --m-accent-hover:  #355cb8;
-    --m-accent-soft:   #eaf0fc;
+    --m-accent:        #009a3f;
+    --m-accent-rgb:    0, 154, 63;
+    --m-accent-hover:  #087a38;
+    --m-accent-soft:   #e7f5ec;
 }
 body.app.theme-purple {
     --m-accent:        #7c3aed;

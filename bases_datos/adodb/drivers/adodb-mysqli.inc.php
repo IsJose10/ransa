@@ -1410,6 +1410,13 @@ SELECT *
 			$this->_errorMsg = '';
 		}
 
+		if (!$this->_connectionID || !($this->_connectionID instanceof \mysqli)) {
+			if ($this->debug) {
+				ADOConnection::outp("Query: " . $sql . " failed. No active MySQLi connection.");
+			}
+			return false;
+		}
+
 		if ($this->multiQuery) {
 			$rs = mysqli_multi_query($this->_connectionID, $sql . ';');
 			if ($rs) {

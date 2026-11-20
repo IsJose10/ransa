@@ -1,64 +1,10 @@
 <?php
 include ("conexion.php");
-include ("estilo.css");
 
 $cod_usu='';
 $cod_usu=$_REQUEST['rol'];
 
-
 ?>
-
-<script>
-function restablecer()
-{
-	AjaxConsulta('apli_roles.php', {}, 'contenedor');	
-}
-function actualizar(nombre,cod_usuario,cod_rol)
-{
-	if(document.getElementById(nombre).checked==false)
-	{
-		//ifr1.location.href="apli_roles_l.php?op=E&cod_rol="+cod_rol+"&cod_usuario="+cod_usuario;
-		AjaxConsulta('apli_roles_l.php', {op:"E" , cod_rol:cod_rol , cod_usuario:cod_usuario}, 'contenedor');	
-	}
-	else
-	{
-		//ifr1.location.href="apli_roles_l.php?op=I&cod_rol="+cod_rol+"&cod_usuario="+cod_usuario;
-		AjaxConsulta('apli_roles_l.php', {op:"I" , cod_rol:cod_rol , cod_usuario:cod_usuario}, 'contenedor');	
-	}
-}
-
-function consultar()
-{
-	//location.href='roles_aplicaciones.php?cod_rol='+document.form.rol.value;
-	if(form.checkValidity()){
-
-			debugger;
-	
-	        AjaxConsulta('apli_roles.php', {rol:$('#rol').val()}, 'contenedor');	
-	}	
-	
-	//document.form.action='apli_roles.php';
-	
-}
-
-function myFunction() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
 
 <form name=form id=form action="" method="post" onsubmit="return false;">
 <div class="row">

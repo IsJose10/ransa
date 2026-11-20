@@ -7,11 +7,11 @@
 
 body.app {
     /* Surfaces */
-    --m-bg:           #f4f6fa;
+    --m-bg:           #f5f7f5;
     --m-surface:      #ffffff;
-    --m-surface-2:    #f8fafc;
-    --m-sidebar:      #1c2333;
-    --m-sidebar-soft: #28304a;
+    --m-surface-2:    #f7faf8;
+    --m-sidebar:      #123b27;
+    --m-sidebar-soft: #1b5135;
 
     /* Borders + dividers */
     --m-border:       #e4e7ec;
@@ -24,23 +24,21 @@ body.app {
     --m-text-faint:   #94a3b8;
     --m-text-on-dark: #f1f5f9;
 
-    /* Brand + status — anchored to the original CoolAdmin blue (#4272d7)
-       with an additional set of accent hues borrowed from the original
-       gradient tiles for the KPI strip. */
-    --m-accent:        #4272d7;
-    --m-accent-rgb:    66, 114, 215;
-    --m-accent-hover:  #355cb8;
-    --m-accent-soft:   #eaf0fc;
+    /* Corporate brand colors */
+    --m-accent:        #009a3f;
+    --m-accent-rgb:    0, 154, 63;
+    --m-accent-hover:  #087a38;
+    --m-accent-soft:   #e7f5ec;
 
     /* Inspired-by-original KPI accents */
-    --m-c1:            #4272d7;  /* blue (revenue) */
-    --m-c1-soft:       #eaf0fc;
-    --m-c2:            #11998e;  /* teal (orders) */
-    --m-c2-soft:       #e0f3f1;
-    --m-c3:            #f97316;  /* warm orange (users) */
-    --m-c3-soft:       #fff1e6;
-    --m-c4:            #ec4899;  /* magenta-pink (conversion) */
-    --m-c4-soft:       #fce7f3;
+    --m-c1:            #009a3f;
+    --m-c1-soft:       #e7f5ec;
+    --m-c2:            #087a38;
+    --m-c2-soft:       #deefe4;
+    --m-c3:            #f39200;
+    --m-c3-soft:       #fff3df;
+    --m-c4:            #c77800;
+    --m-c4-soft:       #fbe8c9;
 
     --m-success:       #10b981;
     --m-success-soft:  #ecfdf5;

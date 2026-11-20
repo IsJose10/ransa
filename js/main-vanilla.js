@@ -1052,6 +1052,24 @@ function initCommandPalette() {
     { section: 'Actions', title: 'Show error toast',   sub: 'Demo an error',        action: () => window.toast.error('Something went wrong'),  icon: 'fa-circle-xmark' },
   ];
 
+  function getCommands() {
+    const appCommands = [];
+    const seenUrls = new Set();
+    document.querySelectorAll('[data-app-url]').forEach((link) => {
+      const url = link.getAttribute('data-app-url');
+      if (!url || seenUrls.has(url)) return;
+      seenUrls.add(url);
+      appCommands.push({
+        section: 'Aplicaciones',
+        title: (link.textContent || '').trim(),
+        sub: 'Abrir aplicación',
+        fragment: url,
+        icon: 'fa-layer-group'
+      });
+    });
+    return [...COMMANDS, ...appCommands];
+  }
+
   let overlay, input, results, activeIndex = 0, currentList = [];
   function build() {
     overlay = document.createElement('div');
@@ -1083,9 +1101,10 @@ function initCommandPalette() {
 
   function render(query) {
     const q = (query || '').trim().toLowerCase();
+    const commands = getCommands();
     const filtered = q
-      ? COMMANDS.filter(c => (c.title + ' ' + (c.sub || '')).toLowerCase().includes(q))
-      : COMMANDS;
+      ? commands.filter(c => (c.title + ' ' + (c.sub || '')).toLowerCase().includes(q))
+      : commands;
     currentList = filtered;
     activeIndex = 0;
     if (!filtered.length) {
@@ -1139,7 +1158,9 @@ function initCommandPalette() {
   function activate(cmd) {
     if (!cmd) return;
     close();
-    if (cmd.href) window.location.href = cmd.href;
+    if (cmd.fragment && window.RansaConnection) {
+      window.RansaConnection.loadFragment(cmd.fragment, {}, 'contenedor');
+    } else if (cmd.href) window.location.href = cmd.href;
     else if (cmd.action) cmd.action();
   }
 
