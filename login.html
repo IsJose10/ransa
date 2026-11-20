@@ -1,42 +1,78 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Aplicaciones Ransa</title>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="generator" content="CoolAdmin 3.5.0"/>
+    <meta name="description" content="Acceso al sistema de aplicaciones y roles de Ransa."/>
+    <title>Iniciar sesión | Aplicaciones Ransa</title>
+    <meta name="robots" content="noindex,nofollow"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Iniciar sesión | Aplicaciones Ransa"/>
+    <meta property="og:description" content="Acceso al sistema de aplicaciones y roles de Ransa."/>
+    <meta property="og:image" content="screenshots/cooladmin-bootstrap-dashboard-2.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Iniciar sesión | Aplicaciones Ransa"/>
+    <meta name="twitter:description" content="Acceso al sistema de aplicaciones y roles de Ransa."/>
+    <meta name="theme-color" content="#009a3f"/>
+    <link href="css/font-face.css" rel="stylesheet" media="all"/>
+    <link rel="preconnect" href="https://rsms.me/"/>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
+    <link href="vendor/fontawesome-7.3.1/css/all.min.css" rel="stylesheet" media="all"/>
+    <link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all"/>
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"/>
+    <link href="css/theme.css" rel="stylesheet" media="all"/>
+    <link href="css/app.css" rel="stylesheet" media="all"/>
+  </head>
+  <body class="app auth-page"><a class="visually-hidden-focusable skip-link" href="#auth-form">Skip to sign-in form</a>
+    <main class="login-wrap" id="auth-form">
+      <div class="login-content">            <div class="auth-brand-wrapper">
+                <img class="auth-brand-badge" src="images/brand/ransa-mark.png" alt="Ransa">
+                <h1 class="auth-brand-title">Ransa</h1>
+                <p class="auth-brand-subtitle">Sistema de Gestión de Aplicaciones y Roles</p>
+            </div>
 
-<body>
+            <form name="f" id="loginForm" class="valida" action="valida.php" method="POST">
+                <div class="form-group mb-3">
+                    <label for="us" class="form-label">Usuario</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="us-addon">
+                            <i class="fa-solid fa-user" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" id="us" name="us" placeholder="Ingrese su usuario" autocomplete="username" aria-describedby="us-addon" required autofocus>
+                    </div>
+                </div>
 
-<form name=f class=valida action=valida.php>
+                <div class="form-group mb-4">
+                    <label for="pa" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="pa-addon">
+                            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" id="pa" name="pa" placeholder="Ingrese su contraseña" autocomplete="current-password" aria-describedby="pa-addon" required>
+                        <button class="btn btn-toggle-password" type="button" id="btnTogglePassword" tabindex="-1" title="Mostrar/ocultar contraseña">
+                            <i class="fa-solid fa-eye" id="togglePasswordIcon" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
 
-    <div class="row">
-	<div class = "col-md-4">
-	</div>
-	<div class = "col-md-4">
-	<br>
-	<label class="form_control"> Usuario</label>
-	<input type="text" class="form-control" name="us" required>
-	<label class="form_control"> Password</label>
-	<input type="password" class="form-control" name="pa" required>
-	</div>
-	<div class = "col-md-4">
-	</div>
-	</div>
+                <div class="d-grid gap-2">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary btn-login">
+                        <i class="fa-solid fa-right-to-bracket me-2" aria-hidden="true"></i> Iniciar Sesión
+                    </button>
+                </div>
+            </form>
 
-	
-	<div class="row">
-	<div class = "col-md-5">
-	</div>
-	<div class = "col-md-2 botton_login">
-	<input type ="submit" value='Iniciar' class="btn btn-default color_botton1" title='De clic para ingresar'>
-	</div>
-	<div class = "col-md-5">
-	</div>
-	</div>
-	
-	
-
-
-</form>
-</body>
-
+      </div>
+    </main>
+    <script src="js/vanilla-utils.js"></script>
+    <script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
+    <script src="js/bootstrap5-init.js"></script>
+    <script src="js/main-vanilla.js"></script>
+    <script src="js/modern-plugins.js"></script>
+    <script src="js/layers/connection.js"></script>
+    <script src="js/layers/logic.js"></script>
+    <script src="js/layers/ui.js"></script>
+    <script src="js/layers/auth-ui.js"></script>
+  </body>
 </html>

@@ -23,7 +23,7 @@ $email=$_SESSION["email"];
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Sales pipeline | CoolAdmin Bootstrap 5 Admin Dashboard"/>
     <meta name="twitter:description" content="Sales pipeline dashboard with deals funnel, top reps, and source attribution."/>
-    <meta name="theme-color" content="#4272d7"/>
+    <meta name="theme-color" content="#66752a"/>
     <link href="css/font-face.css" rel="stylesheet" media="all"/>
     <link rel="preconnect" href="https://rsms.me/"/>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
@@ -41,7 +41,7 @@ $email=$_SESSION["email"];
       <header class="header-mobile d-block d-lg-none">
         <div class="header-mobile__bar">
           <div class="container-fluid">
-            <div class="header-mobile-inner"><a class="logo" href="index.html"><img src="images/icon/logo.png" alt="CoolAdmin"></a>
+            <div class="header-mobile-inner"><a class="logo" href="contexto.php" aria-label="Ransa inicio"><img src="images/brand/ransa-mark.png" alt="Ransa"></a>
               <button class="hamburger hamburger--slider" type="button" aria-label="Toggle navigation"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
             </div>
           </div>
@@ -72,7 +72,7 @@ $email=$_SESSION["email"];
       </header>
 	  
       <aside class="menu-sidebar" id="main-sidebar">
-        <div class="logo"><a class="logo-link" href="index.html" aria-label="CoolAdmin home"><span class="logo-mark" aria-hidden="true">R</span><span class="logo-text">Ransa</span></a>
+        <div class="logo"><a class="logo-link" href="contexto.php" aria-label="Ransa inicio"><img class="logo-mark" src="images/brand/ransa-mark.png" alt="" aria-hidden="true"><span class="logo-text">Ransa</span></a>
           <button class="sidebar-close js-sidebar-toggle" type="button" aria-label="Close navigation"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </div>
         <div class="menu-sidebar__content js-scrollbar1">
@@ -88,7 +88,7 @@ $email=$_SESSION["email"];
 					$nombre_rol=$eq->fields['nombre'];
 					?>
 					<li class="active has-sub"><a class="js-arrow open" href="#"><i class="fa-solid fa-tachometer-alt"></i><?php echo htmlentities($nombre_rol);?></a>
-					<ul class="list-unstyled navbar__sub-list js-sub-list" style="display: block;">
+					<ul class="list-unstyled navbar__sub-list js-sub-list ransa-open-submenu">
 							
 					<?php
 					$q1="select a.id,a.nombre,a.url from aplicaciones a,rol_aplicaciones r where r.cod_aplicacion=a.id and r.cod_rol=$cod_rol ORDER BY 2";
@@ -101,7 +101,7 @@ $email=$_SESSION["email"];
 						$nombre_apli=$eq1->fields['nombre'];
 						$url_apli=$eq1->fields['url'];
 						?>
-						<li><a href="#" style="cursor:pointer;" onclick="evento('<?php echo $url_apli;?>');"><?php echo $nombre_apli;?></a></li>
+						<li><a href="#" class="js-app-link ransa-app-link" data-app-url="<?php echo htmlspecialchars($url_apli, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($nombre_apli, ENT_QUOTES, 'UTF-8'); ?></a></li>
 						<?php
 						$eq1->MoveNext();
 					}
@@ -124,10 +124,10 @@ $email=$_SESSION["email"];
             <div class="container-fluid">
               <div class="header-wrap">
                 
-				<div style='display:none'>
+                <div>
 				<button class="sidebar-toggle js-sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-sidebar"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
-                <form class="form-header" role="search" onsubmit="return false"><i class="fa-solid fa-magnifying-glass form-header__icon" aria-hidden="true"></i>
-                  <input class="au-input au-input--xl" type="search" name="search" placeholder="Buscar…" aria-label="Search"><kbd class="form-header__hint" aria-hidden="true">Digita la palabra a buscar</kbd>
+                <form class="form-header ransa-search-form" role="search"><i class="fa-solid fa-magnifying-glass form-header__icon" aria-hidden="true"></i>
+                  <input class="au-input au-input--xl" type="search" name="search" placeholder="Buscar aplicaciones…" aria-label="Buscar aplicaciones"><kbd class="form-header__hint" aria-hidden="true">Ctrl+K</kbd>
                 </form>
 				</div>
 				
@@ -221,7 +221,6 @@ $email=$_SESSION["email"];
                         </div>
                         <div class="account-dropdown__body">
                           <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-user"></i>Account</a></div>
-                          <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-gear"></i>Setting</a></div>
                           <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-sack-dollar"></i>Billing</a></div>
                         </div>
                         <div class="account-dropdown__footer"><a href="salida.php"><i class="fa-solid fa-power-off"></i>Salir</a></div>
@@ -239,21 +238,37 @@ $email=$_SESSION["email"];
           <div class="section__content section__content--p30">
             <div class="container-fluid">                        <!-- Page header -->
              
-				<div class="row row-tight" style="margin-top: 5px;">
-						
-					<div class="col-lg-12" id=contenedor name=contenedor >
-						
-						
-						Contenedor						
-							
-						
+				<div class="row row-tight workspace-layout">
+					<div class="col-lg-12">
+						<section class="workspace-welcome" aria-label="Resumen de bienvenida">
+							<div class="workspace-welcome__content">
+								<span class="workspace-welcome__eyebrow">Inicio</span>
+								<h1>Hola, <?php echo htmlspecialchars($datos_usuario, ENT_QUOTES, 'UTF-8'); ?></h1>
+								<p>Seleccione una aplicación para gestionar sus procesos desde un solo lugar.</p>
+							</div>
+						</section>
+						<section class="app-content-card" aria-labelledby="workspace-title">
+							<div class="app-content-card__header">
+								<div>
+									<span class="app-content-card__eyebrow">Área de trabajo</span>
+									<h1 id="workspace-title" class="app-content-card__title">Aplicaciones Ransa</h1>
+								</div>
+								<span class="app-content-card__status"><i class="fa-solid fa-circle" aria-hidden="true"></i> Sesión activa</span>
+							</div>
+							<div id="contenedor" name="contenedor" class="app-content-card__body" aria-live="polite">
+								<div class="app-empty-state">
+									<i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+									<p>Seleccione una aplicación del menú para comenzar.</p>
+								</div>
+							</div>
+						</section>
 					</div>
 					
 				</div>
 		
 
 				<!-- Footer -->
-				<div class="row" style="margin-top: 28px;">
+				<div class="row ransa-workspace-footer">
 					<div class="col-md-12">
 						<div class="copyright">
 							<p>Copyright © 2026 Ransa <a href="https://www.ransa.biz" rel="nofollow" target="_blank">Ransa</a>.</p>
@@ -272,24 +287,12 @@ $email=$_SESSION["email"];
     <script src="js/bootstrap5-init.js"></script>
     <script src="js/main-vanilla.js"></script>
     <script src="js/modern-plugins.js"></script>
-	
-	<script>
-	function AjaxConsulta(pagDestino, parametros, htmlObjetivo) {
-		var obj = document.getElementById(htmlObjetivo);
-		if (!obj) return;
-		obj.innerHTML = "<p class='text-center text-muted py-3'><br/>Por favor espere unos segundos...</p>";
-		fetch(pagDestino)
-			.then(function(r) { return r.text(); })
-			.then(function(html) { obj.innerHTML = html; })
-			.catch(function() { obj.innerHTML = "<p class='text-danger text-center py-3'>No se pudo cargar " + pagDestino + "</p>"; });
-	}
 
-	
-	function evento(a) {
-		AjaxConsulta(a, '', 'contenedor');
-	}
-	
-	
-	</script>
+    <!-- Arquitectura de Capas JS (Conexión, Lógica y Front/UI) -->
+    <script src="js/layers/connection.js"></script>
+    <script src="js/layers/logic.js"></script>
+    <script src="js/layers/ui.js"></script>
+    <script src="js/layers/legacy-bridges.js"></script>
+    <script src="js/layers/response-ui.js"></script>
   </body>
 </html>

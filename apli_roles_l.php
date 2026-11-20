@@ -15,11 +15,7 @@ if($op=='I')
 	
 	if(!$eq=$dbmy->Execute($q))
 	{
-		echo "
-		<script>
-			alert('ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-		</script>
-		";
+		echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 		$dbmy->RollbackTrans();
 		die();
 		exit();
@@ -35,11 +31,7 @@ if($op=='E')
 		
 		if(!$eq=$dbmy->Execute($q))
 		{
-			echo "
-			<script>
-				alert('ERROR AL ELIMINAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-			</script>
-			";
+			echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL ELIMINAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 			$dbmy->RollbackTrans();
 			die();
 			exit();
@@ -49,11 +41,7 @@ if($op=='E')
 		
 }
 
-echo "
-<script>
-AjaxConsulta('apli_roles.php', {rol:$cod_usuario}, 'contenedor');	
-</script>
-";
+echo '<div data-ransa-server-response data-ransa-type="info" data-ransa-message="Asignación de usuario actualizada" data-ransa-reload="apli_roles.php" data-ransa-params="' . htmlspecialchars(json_encode(['rol' => (int) $cod_usuario]), ENT_QUOTES, 'UTF-8') . '"></div>';
 
 
 ?>

@@ -15,11 +15,7 @@ if($op=='I')
 	
 	if(!$eq=$dbmy->Execute($q))
 	{
-		echo "
-		<script>
-			alert('ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-		</script>
-		";
+		echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 		$dbmy->RollbackTrans();
 		die();
 		exit();
@@ -35,11 +31,7 @@ if($op=='M')
 	
 	if(!$eq=$dbmy->Execute($q))
 	{
-		echo "
-		<script>
-			alert('ERROR AL MODIFICAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-		</script>
-		";
+		echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL MODIFICAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 		$dbmy->RollbackTrans();
 		die();
 		exit();
@@ -63,11 +55,7 @@ if($op=='E')
 		
 		if(!$eq=$dbmy->Execute($q))
 		{
-			echo "
-			<script>
-				alert('ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-			</script>
-			";
+			echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL ELIMINAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 			$dbmy->RollbackTrans();
 			die();
 			exit();
@@ -76,16 +64,12 @@ if($op=='E')
 	}
 	else
 	{
-		echo "<script>alert('Existen aplicaciones y usuarios asociados por favor modifique y vuelva a intentarlo');</script>";
+		echo '<div data-ransa-server-response data-ransa-type="warning" data-ransa-message="Existen aplicaciones y usuarios asociados por favor modifique y vuelva a intentarlo"></div>';
+		exit();
 	}	
 	
 		
 }
 
-echo "
-<script>
-alert('Transaccion exitosa');
-AjaxConsulta('roles.php',{}, 'contenedor');	
-</script>
-";
+echo '<div data-ransa-server-response data-ransa-type="success" data-ransa-message="Transacción exitosa" data-ransa-reload="roles.php" data-ransa-params="{}"></div>';
 ?>

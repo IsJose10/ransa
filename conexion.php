@@ -8,8 +8,8 @@ include ("bases_datos/adodb/adodb.inc.php");
 include ("bases_datos/usb_defglobales.inc");
 
 if ($_SESSION["autentificado"] != "SI") 
-{  	echo "<script>alert('Su sesion ha expirado, por favor volver a autenticarse');</script>";
-	echo "<script>location.href='login.html';</script>";
+{
+	header('Location: login.html?status=session');
 	exit;
 } 
 else 
@@ -20,15 +20,17 @@ else
      if($tiempo_transcurrido >= $tiempo_sesion) {
 		session_destroy(); 
 		session_unset();
+		header('Location: login.html?status=session');
+		exit;
 	}else {
     $_SESSION["ultimoAcceso"] = $ahora;
 	}
 } 
 
 $dbmy = NewADOConnection("mysqli");
-$dbmy->Connect($bd_host,$bd_usuario,$bd_password,$bd_base);
-if (!$dbmy){
-       echo "<br>error de conexion<br>";
+$ok_conn = @$dbmy->Connect($bd_host, $bd_usuario, $bd_password, $bd_base);
+if (!$ok_conn || !$dbmy->_connectionID){
+       echo "<br>Error de conexion a la base de datos: " . htmlspecialchars($dbmy->ErrorMsg()) . "<br>";
        exit;
 }
 ?>

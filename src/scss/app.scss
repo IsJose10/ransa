@@ -46,3 +46,103 @@
 @use 'app/notifications';
 @use 'app/inbox-pane';
 @use 'app/component-extras';
+
+/* Ransa final workspace polish */
+body.app .workspace-layout {
+    margin-top: 8px;
+}
+body.app .workspace-welcome {
+    display: block;
+    margin-bottom: 18px;
+    padding: 4px 2px 16px;
+    border-bottom: 1px solid var(--m-border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+body.app .workspace-welcome__eyebrow {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--m-accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+body.app .workspace-welcome h1 {
+    margin: 0 0 5px;
+    color: #173929;
+    font-size: 24px;
+    line-height: 1.2;
+}
+body.app .workspace-welcome p {
+    margin: 0;
+    color: var(--m-text-muted);
+    font-size: 13.5px;
+}
+@media (max-width: 767.98px) {
+    body.app .workspace-welcome { padding: 2px 0 14px; }
+}
+body.app .app-content-card {
+    border-radius: 12px;
+    border-color: var(--m-border);
+    box-shadow: var(--m-shadow-sm);
+}
+body.app .app-content-card__header {
+    min-height: 84px;
+    padding: 18px 22px;
+    background: var(--m-surface);
+}
+body.app .app-content-card__eyebrow {
+    color: var(--m-accent);
+}
+body.app .app-content-card__title {
+    font-size: 18px;
+}
+body.app .app-content-card__status {
+    border: 0;
+    background: transparent;
+    color: var(--m-text-muted);
+}
+body.app .app-empty-state {
+    min-height: 220px;
+    border: 0;
+    border-radius: 8px;
+    background: #fafbfa;
+}
+body.app .app-empty-state i {
+    background: var(--m-accent-soft);
+    color: var(--m-accent);
+}
+
+body.app.login-splash {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background: #05051f;
+}
+body.app.login-splash .login-splash__content {
+    width: min(760px, 86vw);
+    display: grid;
+    place-items: center;
+}
+body.app.login-splash .login-splash__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+body.app .ransa-open-submenu {
+    display: block;
+}
+body.app .ransa-app-link {
+    cursor: pointer;
+}
+body.app .ransa-workspace-footer {
+    margin-top: 28px;
+}
+body.app .menu-sidebar .logo-mark {
+    object-fit: contain;
+    object-position: center;
+}

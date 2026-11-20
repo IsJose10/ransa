@@ -13,6 +13,27 @@ const removeClass = (element, className) => element.classList.remove(className);
 const toggleClass = (element, className) => element.classList.toggle(className);
 const hasClass = (element, className) => element.classList.contains(className);
 
+// Value getter / setter (jQuery compatibility helper)
+const val = (element, value) => {
+    if (typeof element === 'string') element = $(element);
+    if (!element) return undefined;
+    if (value !== undefined) {
+        element.value = value;
+        return element;
+    }
+    return element.value;
+};
+
+if (typeof Element !== 'undefined' && !Element.prototype.val) {
+    Element.prototype.val = function(newVal) {
+        if (newVal !== undefined) {
+            this.value = newVal;
+            return this;
+        }
+        return this.value;
+    };
+}
+
 // Event handling
 const on = (element, event, handler, options = false) => {
     if (typeof element === 'string') {
@@ -181,11 +202,12 @@ window.siblings = siblings;
 window.closest = closest;
 window.find = find;
 window.findAll = findAll;
+window.val = val;
 
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
-        $, $$, addClass, removeClass, toggleClass, hasClass,
+        $, $$, addClass, removeClass, toggleClass, hasClass, val,
         on, off, slideUp, slideDown, slideToggle,
         fadeIn, fadeOut, fadeToggle, ready,
         hide, show, siblings, closest, find, findAll

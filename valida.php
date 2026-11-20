@@ -5,35 +5,36 @@ error_reporting(E_ALL);
 
 include ("conexion_sin.php");
 
-$us=$_REQUEST['us'];
-$pa=$_REQUEST['pa'];
+$us = isset($_REQUEST['us']) ? trim($_REQUEST['us']) : '';
+$pa = isset($_REQUEST['pa']) ? trim($_REQUEST['pa']) : '';
 
-$q="select * from usuarios where usuario='$us' and clave='$pa'";
-$eq=$dbmy->Execute($q);
-$fq=$eq->RecordCount();
-if($fq>0)
+$us_clean = addslashes($us);
+$pa_clean = addslashes($pa);
+
+$q = "select * from usuarios where usuario='$us_clean' and clave='$pa_clean'";
+$eq = $dbmy->Execute($q);
+
+if ($eq && $eq->RecordCount() > 0)
 {
-	$codigo = $eq -> fields['id'];
-	$nombre = $eq -> fields['nombre'];
-	$nit = $eq -> fields['nit'];
-	$email = $eq -> fields['email'];
+	$codigo = $eq->fields['id'];
+	$nombre = $eq->fields['nombre'];
+	$nit = $eq->fields['nit'];
+	$email = $eq->fields['email'];
 	
-
-	$_SESSION["id"]=$codigo;
-	$_SESSION["nombre"]=$nombre;
-	$_SESSION["nit"]=$nit;
-	$_SESSION["email"]=$email;
+	$_SESSION["id"] = $codigo;
+	$_SESSION["nombre"] = $nombre;
+	$_SESSION["nit"] = $nit;
+	$_SESSION["email"] = $email;
 	
+	$_SESSION["autentificado"] = "SI";
+	$_SESSION["ultimoAcceso"] = date("Y-n-j H:i:s");
 	
-	$_SESSION["autentificado"]= "SI";
-	$_SESSION["ultimoAcceso"]= date("Y-n-j H:i:s");
-	
-	echo "<script>location.href='contexto.php';</script>";
+	header('Location: contexto.php');
+	exit;
 }
 else
 {
-	echo "<script>alert('Los datos son incorrectos');
-	location.href='login.php;
-	</script>";
+	header('Location: login.html?status=error');
+	exit;
 }
 ?>

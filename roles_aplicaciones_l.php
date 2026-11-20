@@ -14,11 +14,7 @@ if($op=='I')
 	
 	if(!$eq=$dbmy->Execute($q))
 	{
-		echo "
-		<script>
-			alert('ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-		</script>
-		";
+		echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL INSERTAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 		$dbmy->RollbackTrans();
 		die();
 		exit();
@@ -34,11 +30,7 @@ if($op=='E')
 		
 		if(!$eq=$dbmy->Execute($q))
 		{
-			echo "
-			<script>
-				alert('ERROR AL ELIMINAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA');
-			</script>
-			";
+			echo '<div data-ransa-server-response data-ransa-type="error" data-ransa-message="ERROR AL ELIMINAR, POR FAVOR COMUNIQUE AL ADMINISTRADOR DEL SISTEMA"></div>';
 			$dbmy->RollbackTrans();
 			die();
 			exit();
@@ -48,10 +40,6 @@ if($op=='E')
 		
 }
 
-echo "
-<script>
-AjaxConsulta('roles_aplicaciones.php', {rol:$cod_rol}, 'contenedor');	
-</script>
-";
+echo '<div data-ransa-server-response data-ransa-type="info" data-ransa-message="Asociación actualizada correctamente" data-ransa-reload="roles_aplicaciones.php" data-ransa-params="' . htmlspecialchars(json_encode(['rol' => (int) $cod_rol]), ENT_QUOTES, 'UTF-8') . '"></div>';
 
 ?>

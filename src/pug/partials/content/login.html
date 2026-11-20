@@ -1,42 +1,36 @@
-            <a href="index.html" class="auth-brand" aria-label="CoolAdmin home">
-                <span class="logo-mark" aria-hidden="true">C</span>
-                <span class="logo-text">CoolAdmin</span>
-            </a>
-            <h1 class="auth-title">Welcome back</h1>
-            <p class="auth-subtitle">Sign in to continue to your dashboard.</p>
+            <div class="auth-brand-wrapper">
+                <img class="auth-brand-badge" src="images/brand/ransa-mark.png" alt="Ransa">
+                <h1 class="auth-brand-title">Ransa</h1>
+                <p class="auth-brand-subtitle">Sistema de Gestión de Aplicaciones y Roles</p>
+            </div>
 
-            <form class="login-form" action="" method="post" onsubmit="return false">
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input id="email" class="au-input" type="email" name="email"
-                        placeholder="you@example.com" autocomplete="email" required>
+            <form name="f" id="loginForm" class="valida" action="valida.php" method="POST">
+                <div class="form-group mb-3">
+                    <label for="us" class="form-label">Usuario</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="us-addon">
+                            <i class="fa-solid fa-user" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" id="us" name="us" placeholder="Ingrese su usuario" autocomplete="username" aria-describedby="us-addon" required autofocus>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input id="password" class="au-input" type="password" name="password"
-                        placeholder="••••••••" autocomplete="current-password" required>
-                </div>
-                <div class="login-checkbox">
-                    <label>
-                        <input type="checkbox" name="remember">
-                        Remember me
-                    </label>
-                    <a href="forget-pass.html">Forgot password?</a>
-                </div>
-                <button class="au-btn au-btn--green" type="submit">Sign in</button>
 
-                <div class="social-login-content">
-                    <div class="social-button">
-                        <button class="au-btn au-btn--blue" type="button">
-                            <i class="fa-brands fa-google" aria-hidden="true"></i> Continue with Google
-                        </button>
-                        <button class="au-btn au-btn--blue2" type="button">
-                            <i class="fa-brands fa-github" aria-hidden="true"></i> Continue with GitHub
+                <div class="form-group mb-4">
+                    <label for="pa" class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="pa-addon">
+                            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" id="pa" name="pa" placeholder="Ingrese su contraseña" autocomplete="current-password" aria-describedby="pa-addon" required>
+                        <button class="btn btn-toggle-password" type="button" id="btnTogglePassword" tabindex="-1" title="Mostrar/ocultar contraseña">
+                            <i class="fa-solid fa-eye" id="togglePasswordIcon" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
-            </form>
 
-            <div class="register-link">
-                <p>Don't have an account? <a href="register.html">Create one</a></p>
-            </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary btn-login">
+                        <i class="fa-solid fa-right-to-bracket me-2" aria-hidden="true"></i> Iniciar Sesión
+                    </button>
+                </div>
+            </form>
